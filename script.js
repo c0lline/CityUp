@@ -53,3 +53,37 @@ btnFacaParte.addEventListener("click", (e) => {
     btnFacaParte.parentElement.insertAdjacentElement("afterend", form);
     document.getElementById("nome-faca-parte").focus();
 });
+
+const slides = document.querySelectorAll(".slide");
+const indicadores = document.querySelectorAll(".indicator");
+const anterior = document.querySelector(".prev");
+const proximo = document.querySelector(".next");
+
+let atual = 0;
+
+function mostrarSlide(numero) {
+
+    slides[atual].classList.remove("active");
+    indicadores[atual].classList.remove("active");
+
+    atual = numero;
+
+    slides[atual].classList.add("active");
+    indicadores[atual].classList.add("active");
+}
+
+proximo.addEventListener("click", function() {
+    let numero = (atual + 1) % slides.length;
+    mostrarSlide(numero);
+});
+
+anterior.addEventListener("click", function() {
+    let numero = (atual - 1 + slides.length) % slides.length;
+    mostrarSlide(numero);
+});
+
+indicadores.forEach(function(indicador, numero) {
+    indicador.addEventListener("click", function() {
+        mostrarSlide(numero);
+    });
+});
