@@ -18,35 +18,38 @@ botao.addEventListener("mouseleave", () =>{
 
 });
 
-const form = document.createElement("form");
-form.id = "form-centro";
+const btnFacaParte = document.querySelector(".btn2");
 
-// Centraliza na tela sem depender de arquivo CSS externo
-form.style.position = "fixed";
-form.style.top = "50%";
-form.style.left = "50%";
-form.style.transform = "translate(-50%, -50%)";
-form.style.zIndex = "999";
-
-form.innerHTML = `
-    <input type="text" id="nome-centro" placeholder="Digite seu nome">
-    <button type="submit">Confirmar</button>
-`;
-
-form.addEventListener("submit", (e) => {
+btnFacaParte.addEventListener("click", (e) => {
     e.preventDefault();
-    const input = document.getElementById("nome-centro");
-    const nome = input.value.trim();
 
-    if (!nome) {
-        alert("Por favor, digite seu nome!");
-        input.focus();
+    if (document.getElementById("form-faca-parte")) {
+        document.getElementById("nome-faca-parte").focus();
         return;
     }
 
-    alert("Bem-vindo, " + nome + "!");
-    form.remove(); // Remove o formulário da tela após preencher
-});
+    const form = document.createElement("form");
+    form.id = "form-faca-parte";
+    form.innerHTML = `
+        <input type="text" id="nome-faca-parte" placeholder="Digite seu nome">
+        <button type="submit">Confirmar</button>
+    `;
 
-document.body.appendChild(form);
-document.getElementById("nome-centro").focus();
+    form.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        const input = document.getElementById("nome-faca-parte");
+        const nome = input.value.trim();
+
+        if (!nome) {
+            alert("Por favor, digite seu nome!");
+            input.focus();
+            return;
+        }
+
+        alert("Bem-vindo ao CityUp, " + nome + "!");
+        form.remove();
+    });
+
+    btnFacaParte.parentElement.insertAdjacentElement("afterend", form);
+    document.getElementById("nome-faca-parte").focus();
+});
