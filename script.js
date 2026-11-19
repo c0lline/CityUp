@@ -17,4 +17,7 @@ botao.addEventListener("mouseleave", () =>{
 
 
 });
+<<<<<<< HEAD:script,.js
 
+=======
+>>>>>>> main:script.js
