@@ -277,6 +277,14 @@ header{
     border-radius: var(--ten);
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+    background-color: var(--sec-suave-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--black-transp);
+    }
 }
 
 .box3 h3{
@@ -338,4 +346,51 @@ footer{
     padding: 30px;
     color: var(--princi-color);
     text-align: center;
+}
+
+
+.box3.active {
+    background-color: var(--sec-color);
+    border-color: var(--principal-green);
+}
+
+.box3:focus-visible {
+    outline: 3px solid var(--principal-green);
+    outline-offset: 4px;
+}
+
+/* Área de informações */
+
+.audience-info {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-top: 0;
+    transition: grid-template-rows 0.4s ease,
+                opacity 0.4s ease,
+                margin-top 0.4s ease;
+}
+
+.audience-info.active {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 25px;
+}
+
+.audience-info-content {
+    overflow: hidden;
+    min-height: 0;
+    background-color: var(--sec-suave-color);
+    border-radius: var(--ten);
+}
+
+.audience-info h3 {
+    color: var(--principal-green);
+    margin: 20px 20px 10px;
+}
+
+.audience-info p {
+    padding: 0 20px 20px;
+    line-height: 1.6;
+    font-size: var(--paragraph);
 }
