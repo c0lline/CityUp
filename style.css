@@ -339,3 +339,13 @@ footer{
     color: var(--princi-color);
     text-align: center;
 }
+
+#textoNovo {
+    color: black;
+    font-family: var(--font-type);
+    font-size: var(--logo-size);
+    opacity: 1;
+    font-weight: 800;
+
+}
+
