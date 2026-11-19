@@ -18,65 +18,38 @@ botao.addEventListener("mouseleave", () =>{
 
 });
 
-const cards = document.querySelectorAll(".box3");
+const btnFacaParte = document.querySelector(".btn2");
 
-const infoArea = document.querySelector("#audience-info");
-const infoTitle = document.querySelector("#audience-title");
-const infoDescription = document.querySelector("#audience-description");
+btnFacaParte.addEventListener("click", (e) => {
+    e.preventDefault();
 
-const audiences = {
-    cidadaos: {
-        title: "Cidadãos",
-        description: "A CityUp é voltada para todos os cidadãos que desejam contribuir para uma cidade melhor, especialmente moradores que convivem diariamente com problemas urbanos e querem ter voz na busca por soluções."
-    },
-
-    orgaos: {
-        title: "Órgãos públicos",
-        description: "A plataforma ajuda os órgãos públicos a entender melhor as necessidades da população, facilitando o recebimento de solicitações e a organização dos problemas que precisam de atenção."
-    },
-
-    equipes: {
-        title: "Equipes de manutenção",
-        description: "Com as informações registradas pelos cidadãos, as equipes de manutenção conseguem identificar os locais que precisam de reparos e organizar melhor os serviços, tornando o atendimento mais eficiente."
-    },
-
-    comunidades: {
-        title: "Comunidades",
-        description: "As comunidades têm um papel importante na transformação da cidade. Por meio da participação coletiva, os moradores podem apontar problemas do dia a dia e colaborar para construir bairros mais cuidados e agradáveis."
-    }
-};
-
-function toggleAudience(card) {
-
-    const audience = card.dataset.audience;
-
-    const isActive = card.classList.contains("active");
-
-    cards.forEach(item => {
-        item.classList.remove("active");
-        item.setAttribute("aria-expanded", "false");
-    });
-
-    if (isActive) {
-        infoArea.classList.remove("active");
-        infoArea.setAttribute("aria-hidden", "true");
+    if (document.getElementById("form-faca-parte")) {
+        document.getElementById("nome-faca-parte").focus();
         return;
     }
 
-    card.classList.add("active");
-    card.setAttribute("aria-expanded", "true");
+    const form = document.createElement("form");
+    form.id = "form-faca-parte";
+    form.innerHTML = `
+        <input type="text" id="nome-faca-parte" placeholder="Digite seu nome">
+        <button type="submit">Confirmar</button>
+    `;
 
-    infoTitle.textContent = audiences[audience].title;
-    infoDescription.textContent = audiences[audience].description;
+    form.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        const input = document.getElementById("nome-faca-parte");
+        const nome = input.value.trim();
 
-    infoArea.classList.add("active");
-    infoArea.setAttribute("aria-hidden", "false");
-}
+        if (!nome) {
+            alert("Por favor, digite seu nome!");
+            input.focus();
+            return;
+        }
 
-cards.forEach(card => {
-
-    card.addEventListener("click", () => {
-        toggleAudience(card);
+        alert("Bem-vindo ao CityUp, " + nome + "!");
+        form.remove();
     });
 
+    btnFacaParte.parentElement.insertAdjacentElement("afterend", form);
+    document.getElementById("nome-faca-parte").focus();
 });
