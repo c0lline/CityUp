@@ -359,8 +359,6 @@ footer{
     outline-offset: 4px;
 }
 
-/* Área de informações */
-
 .audience-info {
     display: grid;
     grid-template-rows: 0fr;
