@@ -277,6 +277,14 @@ header{
     border-radius: var(--ten);
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+    background-color: var(--sec-suave-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--black-transp);
+    }
 }
 
 .box3 h3{
